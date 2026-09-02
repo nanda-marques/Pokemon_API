@@ -1,10 +1,10 @@
-# 📱 Pokémon Details App
+# Pokémon Details App
 
 Este é um aplicativo desenvolvido com **Angular** e **Ionic** que exibe detalhes de Pokémon utilizando dados da [PokéAPI](https://pokeapi.co). A pasta `src` contém todo o código-fonte necessário para rodar a aplicação.
 
 ---
 
-## ⚙️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - [Angular](https://angular.io/)
 - [Ionic Framework](https://ionicframework.com/)
@@ -14,9 +14,9 @@ Este é um aplicativo desenvolvido com **Angular** e **Ionic** que exibe detalhe
 
 ---
 
-## 🚀 Como Rodar o Projeto
+## Como Rodar o Projeto
 
-> ⚠️ Requisitos:
+> Requisitos:
 > - Node.js e npm
 > - Angular CLI (`npm install -g @angular/cli`)
 > - Ionic CLI (`npm install -g @ionic/cli`)
@@ -28,13 +28,13 @@ npm install
 ionic serve
 ```
 
-### 📸 Funcionalidades
+### Funcionalidades
 
-✅ Exibe uma lista de Pokémon
+- Exibe uma lista de Pokémon
 
-✅ Busca detalhes de um Pokémon ao clicar nele
+- Busca detalhes de um Pokémon ao clicar nele
 
-✅ Consome dados em tempo real da PokéAPI
+- Consome dados em tempo real da PokéAPI
 
-✅ Interface limpa e responsiva com Ionic
+- Interface limpa e responsiva com Ionic
 
