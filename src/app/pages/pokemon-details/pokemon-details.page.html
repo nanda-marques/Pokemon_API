@@ -1,0 +1,120 @@
+
+<ion-header class="pokedex-header">
+  <ion-toolbar>
+    <div class="header-content">
+      <div class="brand-text">
+        <ion-title>Pokédex</ion-title>
+        <p>Detalhes do Pokémon</p>
+      </div>
+
+      <ion-buttons slot="end">
+        <ion-back-button
+          defaultHref="/"
+          text="Voltar"
+        ></ion-back-button>
+      </ion-buttons>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="details-content">
+  <div class="status" *ngIf="loading">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Carregando informações...</p>
+  </div>
+
+  <div class="status" *ngIf="!loading && error">
+    <ion-text color="danger">{{ error }}</ion-text>
+  </div>
+
+  <main *ngIf="!loading && pokemon" class="details-container">
+    <section class="pokemon-hero">
+      <p class="pokemon-number">
+        Nº {{ pokemon.id.toString().padStart(3, '0') }}
+      </p>
+
+      <h1>{{ formatName(pokemon.name) }}</h1>
+
+      <div class="types">
+        <ion-badge
+          *ngFor="let item of pokemon.types"
+          class="type-badge"
+        >
+          {{ formatName(item.type.name) }}
+        </ion-badge>
+      </div>
+
+      <div class="hero-image">
+        <img
+          [src]="imageUrl"
+          [alt]="formatName(pokemon.name)"
+        />
+      </div>
+    </section>
+
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title>Informações gerais</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="info-grid">
+          <div class="info-item">
+            <span class="info-label">Altura</span>
+            <strong>{{ formatMeasure(pokemon.height) }} m</strong>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Peso</span>
+            <strong>{{ formatMeasure(pokemon.weight) }} kg</strong>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">Experiência base</span>
+            <strong>{{ pokemon.base_experience ?? 'N/D' }}</strong>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title>Habilidades</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="abilities">
+          <span
+            class="ability"
+            *ngFor="let item of pokemon.abilities"
+          >
+            {{ formatName(item.ability.name.replace('-', ' ')) }}
+            <small *ngIf="item.is_hidden">(Oculta)</small>
+          </span>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="info-card">
+      <ion-card-header>
+        <ion-card-title>Atributos base</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="stat-row" *ngFor="let stat of stats">
+          <div class="stat-heading">
+            <span>{{ stat.label }}</span>
+            <strong>{{ stat.value }}</strong>
+          </div>
+
+          <div class="stat-track">
+            <div
+              class="stat-fill"
+              [style.width.%]="Math.min(stat.value / 255 * 100, 100)"
+            ></div>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </main>
+</ion-content>
