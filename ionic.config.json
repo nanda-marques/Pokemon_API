@@ -1,0 +1,7 @@
+{
+  "name": "Pokemon_API_base",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
